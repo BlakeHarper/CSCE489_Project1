@@ -162,10 +162,11 @@ void update(char fileName[], int num, char text[]) {
 				exit(EXIT_FAILURE);
 			}
 
-			text[strlen(text)-1] = '\0'; // Remove the trailing double quote
-			text++; // Move the pointer to the first character after the opening double quote
+			char *tempText = strdup(text);
+			tempText[strlen(tempText)-1] = '\0'; // Remove the trailing double quote
+			tempText++; // Move the pointer to the first character after the opening double quote
 			// Append the text to the file
-			fprintf(f, "%s\n", text);
+			fprintf(f, "%s\n", tempText);
 			fflush(f);
 			sleep(strlen(text)/5);
 		}
